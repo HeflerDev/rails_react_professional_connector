@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       get 'professionals/index'
       get 'professionals/create'
       get '/show/:id', to: 'professionals#show'
-      get '/destroy/':id, to: 'professionals#destroy'
+      get '/destroy/:id', to: 'professionals#destroy'
     end
   end
   

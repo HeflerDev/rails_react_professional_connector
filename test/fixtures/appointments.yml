@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  schedule: 2021-04-12 18:01:04
+  user: one
+  professional: one
+
+two:
+  schedule: 2021-04-12 18:01:04
+  user: two
+  professional: two
