@@ -8,6 +8,10 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+const componentRequireContext = require.context('components', true)
+const ReactRailsUJS = require('react_ujs')
+ReactRailsUJS.useContext(componentRequireContext)
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

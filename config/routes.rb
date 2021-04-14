@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'home/index'
   namespace :api do
     namespace :v1 do
       get 'professionals/index'
@@ -9,8 +10,8 @@ Rails.application.routes.draw do
     end
   end
   
-  root 'homepage#index'
-  get '/*path' => 'homepage#index'
+  root 'home#index'
+  get '/*path' => 'home#index'
 
   resources :users, only: [:create, :show, :index]
 

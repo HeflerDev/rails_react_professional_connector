@@ -1,0 +1,28 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+  background-color: rgba($color: #000000, $alpha: 0.1);
+  border: solid gray 1px;
+}
+
+html {
+  font-size: 16px !important;
+}
+
+nav {
+
+}
+
+header {
+  height: 85vh;
+  background: image-url('header-cellphone.png') no-repeat center ;
+  background-size: 100%;
+  background-position: top;
+  @media screen and (min-device-width: 426px) {
+    height: 85vh;
+    background: image-url('header-desk.png') no-repeat center ;
+    background-position: right;
+  }
+}
