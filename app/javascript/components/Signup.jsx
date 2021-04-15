@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,12 +8,20 @@ const select = dispatch => ({
   loginUser: user => dispatch(loginUser(user)),
 })
 
-const ConnectedSignup = ({ loginUser, history }) => {
+const mapStateToProps = state => ({
+  isLoggedIn: state.userReducer.isLoggedIn,
+});
+
+const ConnectedSignup = ({ isLoggedIn, loginUser, history }) => {
   const [userData, setUserData] = useState({
     username: '',
     password: '',
     password_confirmation: '',
     errors: [],
+  });
+
+  useEffect(() => {
+    return isLoggedIn ? history.push('/') : null;
   });
 
   const handleChange = (e) => {
@@ -22,32 +30,36 @@ const ConnectedSignup = ({ loginUser, history }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault;
+    e.preventDefault();
     const { username, password, password_confirmation, errors} = userData;
     const user = {
       username: username,
       password: password,
       password_confirmation: password_confirmation,
     }
-      axios.post('https://localhost:3001/users', { user }, { withCredentials: true })
+      axios.post('http://localhost:3001/users', { user }, { withCredentials: true })
       .then(response => {
         if (response.data.status === 'created') {
-          loginUser(response.data);
+          loginUser(response.data.user);
             history.push('/');
         } else {
           throw new Error();
         }
       })
-      .catch(err => setUserData({...userData, errors: [...errors, err]}));
+      .catch(err => setUserData({...userData, errors: [err]}));
   }
-
+ 
   const { username, password, password_confirmation, errors } = userData;
 
-  const handleErrors = () => (errors.length =! 0 ? (
+  const handleErrors = () => (errors.length != 0 ? (
     <>
       {
         errors.map(err => (
-          <p> {err} </p>
+          <>
+            <div key={err.toString() + username}>
+              <p> { err.toString() } </p>
+            </div>
+          </>
         ))
       }
     </>
@@ -62,22 +74,23 @@ const ConnectedSignup = ({ loginUser, history }) => {
       name="username"
       value={username}
       placeholder="User Name"
-      onchange={handleChange}
+      onChange={handleChange}
     />
     <input
       type="text"
       name="password"
       value={password}
       placeholder="Password"
-      onchange={handleChange}
+      onChange={handleChange}
     />
     <input
       type="text"
       name="password_confirmation"
       value={password_confirmation}
       placeholder="Password Confirmation"
-      onchange={handleChange}
+      onChange={handleChange}
     />
+    { handleErrors() }
     <button type="submit">
       Sign Up
     </button>
@@ -85,11 +98,11 @@ const ConnectedSignup = ({ loginUser, history }) => {
   );
 };
 
-const ConnectedSignup.propTypes = {
+ConnectedSignup.propTypes = {
   loginUser: PropTypes.func.isRequired,
-  history: PropTypes.func.isRequired,
+  // history: PropTypes.obj.isRequired,
 }
 
-const Signup = connect(null, select)(ConnectedSignup);
+const Signup = connect(mapStateToProps, select)(ConnectedSignup);
 
 export default Signup;

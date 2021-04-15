@@ -14,3 +14,4 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 });
 
+store.subscribe(() => console.log(store.getState()));

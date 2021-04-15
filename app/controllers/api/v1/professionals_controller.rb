@@ -4,6 +4,11 @@ class Api::V1::ProfessionalsController < ApplicationController
     render json: @professional
   end
 
+  def categories
+    @professional = Professional.all.map { |item| item.category }.sort
+    render json: @professional
+  end
+
   def create
     @professional = Professional.new(professional_params)
     if @professional.save
