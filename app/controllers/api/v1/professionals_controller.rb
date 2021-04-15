@@ -5,8 +5,13 @@ class Api::V1::ProfessionalsController < ApplicationController
   end
 
   def categories
-    @professional = Professional.all.map { |item| item.category }.sort
-    render json: @professional
+    @professionals = Professional
+      .all
+      .map { |item| item.category }
+      .sort
+      .group_by { |i| i }
+      .map { |key, _| key }
+    render json: @professionals
   end
 
   def create

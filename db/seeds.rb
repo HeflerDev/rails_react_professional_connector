@@ -8,7 +8,7 @@ require 'bcrypt'
   user.save
 end
 
-20.times do
+1000.times do
   professional = Professional.new
   professional.name = Faker::Name.name
   professional.category = Faker::Company.profession
