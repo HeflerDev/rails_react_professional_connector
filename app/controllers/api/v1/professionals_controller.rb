@@ -14,6 +14,11 @@ class Api::V1::ProfessionalsController < ApplicationController
     render json: @professionals
   end
 
+  def categoryFilter
+    @professionals = Professional.all.filter { |item| item.category === params[:category] }
+    render json: @professionals
+  end
+
   def create
     @professional = Professional.new(professional_params)
     if @professional.save
@@ -41,6 +46,16 @@ class Api::V1::ProfessionalsController < ApplicationController
   private
 
   def professional_params
-    params.permit(:name, :type, :description, :image)
+    params.permit(
+      :name,
+      :category,
+      :description,
+      :image,
+      :hourly_wage,
+      :currency,
+      :phone_number,
+      :email,
+      :working_days
+    )
   end
 end
