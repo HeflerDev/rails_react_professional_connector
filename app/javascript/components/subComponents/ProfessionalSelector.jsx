@@ -13,13 +13,13 @@ const ProfessionalsSelector = ({ data }) => {
   } = data;
   return (
     <div className="selector-container">
-      <Link to={`/show/${id}`} className="board">
-        <div className="col-l-11 queue center">
+      <Link to={`/show/${id}`} className="board center container">
+        <div className="col-l-10 queue center">
           <img src={image} alt="profile pic" />
         </div>
-        <div className="col-l-11 queue between">
-          <span>Name:{name}</span>
-          <span>Role: {category}</span>
+        <div className="col-l-11">
+    <span>{name}</span> <br />
+          <span>{category}</span>
         </div>
         <div className="col-l-11 queue between">
           <span>{`Wage:${hourly_wage}${currency}`}</span>

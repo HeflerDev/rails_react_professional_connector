@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logoutUser } from '../../actions/index';
+import { logoutUser } from '../actions/index';
+
+import Logo from '../../assets/images/logo.png';
 
 const mapStateToProps = state => ({
   isLoggedIn: state.userReducer.isLoggedIn,
@@ -24,21 +26,23 @@ const ConnectedNavbar = ({ history, isLoggedIn, user, logoutUser }) => {
 
   const renderUtilities = () => (isLoggedIn ? (
     <>
-    <p>Hello, { user.username } </p>
-    <Link to="/profile" >
-      <p>Profile</p>
+    <div className="queue center">
+      <span>Hello, { user.username }</span>
+    </div>
+    <Link to="/profile" className="queue center" >
+      <span>Profile</span>
     </Link>
     <button type="button" onClick={handleClick}>
-      <p>Logout</p>
+      <span>Logout</span>
     </button>
     </>
   ) : (
     <>
-    <Link to="/signup">
-      <p>Sign Up!</p>
+    <Link to="/signup" className="queue center">
+      <span>Sign Up!</span>
     </Link>
-    <Link to="/login">
-      <p>Login</p>
+    <Link to="/login" className="queue center">
+      <span>Login</span>
     </Link>
     </>
   ))
@@ -46,7 +50,10 @@ const ConnectedNavbar = ({ history, isLoggedIn, user, logoutUser }) => {
   return (
     <nav className="board queue between">
     <div className="company-logo col-12 col-l-3">
-      Logo
+      <Link to="/">
+        <img src={Logo} alt="" className="logo" />
+        <span>Brand Name</span>
+      </Link>
     </div>
     <div className="utils-container queue end col-12 col-l-4">
       { renderUtilities() }

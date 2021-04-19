@@ -38,20 +38,24 @@ const SearchForm = () => {
   };
 
   return (
-    <div className="stack">
+    <div className="search-form-container queue center">
     <form onSubmit={handleSubmit} className="board">
-    <label htmlFor="category" className="col-12 queue">
-    <p>Category:</p>
-    <select id="category" name="selectedCategory" onChange={handleChange}>
-    <option value="">-- Select a Category --</option>
-    {
-      avaiableCategories.map(category => (
-        <option key={category} value={category}>{category}</option>
-      ))
-    }
-    </select>
-    </label>
-    <button type="submit" onSubmit={handleSubmit}>Submit</button>
+      <div className="col-7 queue">
+        <label htmlFor="category">
+          <h4>Category:{' '}</h4>
+          <select id="category" name="selectedCategory" onChange={handleChange}>
+          <option value="">-- Select a Category --</option>
+          {
+            avaiableCategories.map(category => (
+              <option key={category} value={category}>{category}</option>
+            ))
+          }
+          </select>
+        </label>
+      </div>
+      <div className="col-4 queue center">
+        <button type="submit" onSubmit={handleSubmit}>Submit</button>
+      </div>
     </form>
     </div>
   )

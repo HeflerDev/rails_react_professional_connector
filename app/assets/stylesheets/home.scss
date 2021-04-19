@@ -2,31 +2,139 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Quicksand:wght@300&display=swap');
+/* Color Theme Swatches in Hex */
+$color-sweet-red: #F23D4C;
+$color-sweet-red-dark: rgba(220,20,30, 1);
+$color-blue-strong: #307B8C;
+$color-blue-strong-5: rgba(36,111,128, 1);
+$color-blue-soft: #69B7BF;
+$color-green-android: #03A688;
+$color-soft-yellow: #F2DE79;
+$color-soft-yellow-5: rgba(169,100,50, 1);
+$font-text: 'Lora', serif;
+$font-title: 'Quicksand', sans-serif;
+
 * {
-  background-color: rgba($color: #000000, $alpha: 0.1);
-  border: solid gray 1px;
+  text-decoration: none !important;
 }
 
 html {
   font-size: 16px !important;
 }
 
-nav {
+h1,
+h2,
+h3,
+h4 {
+  font-family: $font-title;
+}
 
+p {
+  font-family: $font-text;
+}
+
+a,
+button {
+  text-decoration: none;
+  background-color: $color-blue-strong-5;
+  span {
+    text-decoration:none !important;
+    color: white;
+    &:hover {
+      text-decoration:none !important;
+    }
+  }
+}
+
+a:link {
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  text-decoration: none;
+}
+
+button {
+  background-color: $color-green-android;
+  border: none;
+  border-radius: 10px;
+}
+
+hr {
+  border-color: $color-sweet-red;
+}
+
+nav {
+  background-color: $color-sweet-red;
+  color: white;
+  font-family: $font-title;
+  text-decoration: none;
+  height: 10vh;
+  margin: 0;
+  padding: 1px;
+  .queue {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(220,20,30,0.2);
+    span {
+      margin: auto;
+      border-radius: 10px;
+      padding: 0.5rem;
+    } 
+  }
+  .utils-container {
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    button {
+      background-color: $color-sweet-red-dark;
+      span {
+        background-color: $color-sweet-red-dark;
+      }
+    }
+  }
+  .company-logo {
+    a {
+      color: white;
+    }
+  }
+  span {
+    cursor: pointer;
+    &:hover {
+      transition: 0.2s;
+      background-color: $color-green-android;
+    }
+  }
 }
 
 header {
-  height: 85vh;
+  // height: 90vh;
   background: image-url('header-cellphone.png') no-repeat center ;
-  background-size: 100%;
+  background-size: 110% !important;
   background-position: top;
   h1 {
     color: white;
+    font-family: $font-title;
   }
   @media screen and (min-device-width: 426px) {
-    height: 85vh;
-    background: image-url('header-desk.png') no-repeat center ;
-    background-position: right;
+    min-height:90vh;
+    max-height: 100vh;
+    padding: 0 !important;
+    background: image-url('header-desk.png') no-repeat;
+    background-position: center;
   }
 }
 
@@ -34,14 +142,89 @@ p {
   padding: 1rem;
 }
 
+footer {
+  background-color: $color-blue-strong;
+  min-height: 10rem;
+}
+
 .selector-container {
+  margin: 1rem;
+  padding: 0.5rem;
+  .container {
+    transition: 0.1s;
+    border-radius: 6px;
+    border:solid $color-sweet-red 0.3rem;
+    &:hover {
+      transition: 0.2s;
+      transform: scale(1.05);
+    }
+  }
+  span {
+    color: black;
+  }
+  img {
+    border: solid lightgray 5px;
+    width: 100%;
+    border-radius: 50%;
+  }
+}
+
+.content-pic {
+  border-radius: 10px; 
+}
+
+.profile-container {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .profile {
+  }
+  button {
+    padding: 1rem; 
+    background-color: $color-soft-yellow;
+    border-radius: 4px;
+  }
+  form  {
+    button  {
+      background-color: $color-sweet-red;
+      color: whitesmoke;
+      font-weight: bold;
+    }
+  }
   img {
     border-radius: 50%;
   }
 }
 
-.profile-container {
-  img {
-    border-radius: 50%;
+.company-logo {
+  height: 100%;
+  .logo {
+    height: 100%;
+  }
+}
+
+.search-form-container {
+  form{
+    color: $color-blue-strong-5;
+    background-color: $color-soft-yellow;
+    border-radius: 0.5rem;
+    div {
+      margin:0.2rem;
+    }
+    label {
+      margin: auto;
+    }
+    button {
+      width: 85%;
+      padding: 0.5rem;
+      background-color: white;
+      border-radius: 0.2rem;
+    }
+    select {
+      background-color: white;
+      border-radius: 10px; 
+      border: none;
+    }
   }
 }

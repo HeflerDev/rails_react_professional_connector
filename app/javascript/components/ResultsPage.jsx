@@ -22,7 +22,7 @@ const ResultsPage = ({match: {params: { query }}}) => {
     <div className="board">
       {
         dataArray.map(obj => (
-          <div key={obj.phone_number} className="col-l-4 col-m-6 col-12">
+          <div key={obj.phone_number} className="col-l-3 col-m-6 col-12">
             < ProfessionalsSelector data={obj} />
           </div>
         ))

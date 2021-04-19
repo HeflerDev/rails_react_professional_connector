@@ -8,11 +8,12 @@ const mapStateToProps = state => ({
   user: state.userReducer.user.user
 });
 
-const ConnectedProfessionalProfile = ({ user, isLoggedIn, match: {params: {id}}}) => {
+const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {params: {id}}}) => {
   const [profData, setProfData] = useState(null);
   const [displayForm, setDisplayForm] = useState(null);
   const [formData, setFormData] = useState({
     schedule: '',
+    error: null,
   });
  
   useEffect(() => {
@@ -47,16 +48,25 @@ const ConnectedProfessionalProfile = ({ user, isLoggedIn, match: {params: {id}}}
         professional_id: id,
         schedule: formData.schedule,
       };
-      axios.post('http://localhost:3001/appointments', { appointment }, { withCredentials: true })
-        .then((res) => {
-          console.log(res)
-        });
+      if (appointment.schedule) {
+        axios.post('http://localhost:3001/appointments', { appointment }, { withCredentials: true })
+          .then((res) => {
+            if (res.data.status === 'created') {
+              history.push('/');
+            } else {
+              throw new Error();
+            }
+          })
+          .catch(err => ({...formData, error: err}));
+      } else {
+        setFormData({...formData, error: 'Date Can\'t be Blank'});
+        console.log(formData);
+      }
     };
 
     const handleChange = e => {
       const { name, value } = e.target;
       setFormData({...formData, [name]: value});
-      console.log(formData)
     };
 
     const handleClick = () => {
@@ -68,20 +78,25 @@ const ConnectedProfessionalProfile = ({ user, isLoggedIn, match: {params: {id}}}
         const { schedule } = formData;
         if (isLoggedIn) {
           return(
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="datepick">
-                <p>
-                  Time and Date:
-                </p>
-                <input
-                  type="datetime-local"
-                  name="schedule"
-                  value={schedule}
-                  onChange={handleChange}
-                />
-              </label>
-              <button type="submit">Hire</button>
-            </form>
+            <div className="stack">
+              <form className="stack" onSubmit={handleSubmit}>
+                <label htmlFor="datepick">
+                  <p>
+                    Time and Date:
+                  </p>
+                  <input
+                    type="datetime-local"
+                    name="schedule"
+                    value={schedule}
+                    onChange={handleChange}
+                  />
+                </label>
+                <button type="submit">Hire {name}!</button>
+              </form>
+              <div>
+                { formData.error }
+              </div>
+            </div>
           );
         } else {
           return(
@@ -101,7 +116,8 @@ const ConnectedProfessionalProfile = ({ user, isLoggedIn, match: {params: {id}}}
 
 
     return (
-      <div className="board profile-container center">
+      <div className="profile-container">
+      <div className="board center profile">
         <div className="col-l-5 queue center">
           <img src={image} alt="profile_pic" />
         </div>
@@ -114,13 +130,15 @@ const ConnectedProfessionalProfile = ({ user, isLoggedIn, match: {params: {id}}}
             <div>
               Wage: {`${hourly_wage} ${currency}`}
             </div>
-            <button onClick={handleClick}>Make Proposal</button>
+            <button onClick={handleClick}>Make Schedule</button>
           </div>
         </div>
-        <div className="col-10">
+        <div className="col-5 queue center">
           { renderForm() }
         </div>
       </div>
+      </div>
+
     );
   }
 
