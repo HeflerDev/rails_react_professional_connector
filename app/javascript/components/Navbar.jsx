@@ -27,7 +27,7 @@ const ConnectedNavbar = ({ history, isLoggedIn, user, logoutUser }) => {
   const renderUtilities = () => (isLoggedIn ? (
     <>
     <div className="queue center">
-      <span>Hello, { user.username }</span>
+      <div className="hello-text">Hello, { user.username }!</div>
     </div>
     <Link to="/profile" className="queue center" >
       <span>Profile</span>
@@ -55,7 +55,7 @@ const ConnectedNavbar = ({ history, isLoggedIn, user, logoutUser }) => {
         <span>Brand Name</span>
       </Link>
     </div>
-    <div className="utils-container queue end col-12 col-l-4">
+    <div className="utils-container queue end col-12 col-m-4 col-l-4">
       { renderUtilities() }
     </div>
     </nav>

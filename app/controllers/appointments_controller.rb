@@ -1,6 +1,16 @@
 class AppointmentsController < ApplicationController
   def index
-    @appointment = Appointment.all.order()
+    @appointment = Appointment.all.order(:schedule);
+  end
+
+  def user_appointments
+    @user = current_user
+    @user_appointments = @user.appointments.all.order(:schedule);
+    render json: {
+      status: 'fetched',
+      user_appointments: @user_appointments
+    }
+  end
 
   def create
     @appointment = Appointment.new(appointment_params)

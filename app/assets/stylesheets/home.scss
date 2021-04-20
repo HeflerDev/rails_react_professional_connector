@@ -5,10 +5,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Quicksand:wght@300&display=swap');
 /* Color Theme Swatches in Hex */
 $color-sweet-red: #F23D4C;
-$color-sweet-red-dark: rgba(220,20,30, 1);
+$color-sweet-red-dark: rgba(160,50,80, 1);
 $color-blue-strong: #307B8C;
 $color-blue-strong-5: rgba(36,111,128, 1);
-$color-blue-soft: #69B7BF;
+$color-blue-soft: gray;
 $color-green-android: #03A688;
 $color-soft-yellow: #F2DE79;
 $color-soft-yellow-5: rgba(169,100,50, 1);
@@ -77,17 +77,19 @@ hr {
 }
 
 nav {
+  font-size: 18px;
+  font-weight:bold;
   background-color: $color-sweet-red;
   color: white;
   font-family: $font-title;
   text-decoration: none;
-  height: 10vh;
   margin: 0;
   padding: 1px;
   .queue {
     margin: 0;
     padding: 0;
-    background-color: rgba(220,20,30,0.2);
+    // background-color: rgba(220,20,30,0.2);
+    background-color: rgba($color: $color-blue-soft, $alpha: 0.3);
     span {
       margin: auto;
       border-radius: 10px;
@@ -97,6 +99,7 @@ nav {
   .utils-container {
     color: white;
     margin: 0;
+    border: solid $color-sweet-red-dark 5px;
     padding: 0;
     height: 100%;
     button {
@@ -107,8 +110,13 @@ nav {
     }
   }
   .company-logo {
+    font-size: 24px;
     a {
+      cursor: default;
       color: white;
+    }
+    img {
+      width: 10%;
     }
   }
   span {
@@ -169,6 +177,15 @@ footer {
   }
 }
 
+.hello-text {
+  margin: auto;
+}
+
+.odd {
+  background-color: rgba($color: $color-sweet-red, $alpha: 0.2);
+  color: $color-sweet-red-dark;
+}
+
 .content-pic {
   border-radius: 10px; 
 }
@@ -201,6 +218,37 @@ footer {
   height: 100%;
   .logo {
     height: 100%;
+  }
+}
+
+.appointment-container {
+  padding: 1rem;
+  img {
+    background-color: white;
+    width: 100%;
+    border-radius: 50%;
+    border: solid lightgray 3px;
+  }
+  .btn-attend {
+    color: white;
+    border-radius: 3px;
+  }
+  .btn-cancel {
+    background-color: $color-sweet-red;
+    color: white;
+  }
+  button {
+    margin:1rem auto;
+    height: auto;
+    padding: 0.2rem;
+    width:100%;
+    bottom: 0 !important;
+  }
+  @media screen and(max-device-width: 1023px) {
+    img {
+      margin: auto;
+      width: 50%;
+    }
   }
 }
 

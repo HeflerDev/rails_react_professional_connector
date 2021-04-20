@@ -5,16 +5,17 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'professionals/index'
       get 'professionals/categories'
-      get 'professionals/categories/:category', to: 'professionals#categoryFilter' 
+      get 'professionals/categories/:category', to: 'professionals#categoryFilter'
       post 'professionals/create'
       get '/show/:id', to: 'professionals#show'
       delete '/destroy/:id', to: 'professionals#destroy'
     end
   end
 
-  resources :appointments, only: [:create, :show, :destroy]
-  resources :users, only: [:create, :show, :index]
-  
+  resources :appointments, only: %i[create show destroy]
+  get '/user/appointments', to: 'appointments#user_appointments'
+  resources :users, only: %i[create show index]
+
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/logged_in', to: 'sessions#is_logged_in?'

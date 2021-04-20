@@ -3,7 +3,7 @@ import SearchForm from '../../containers/SearchForm';
 
 const Header = () => (
   <header>
-    <h1 className="queue center">Lorem Ipsum Dolor Sit Amet</h1>
+    <h1 className="queue center">Connect with professionals from around the world!</h1>
     <SearchForm /> 
   </header>
 );
