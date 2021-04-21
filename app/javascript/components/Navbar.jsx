@@ -49,13 +49,13 @@ const ConnectedNavbar = ({ history, isLoggedIn, user, logoutUser }) => {
 
   return (
     <nav className="board queue between">
-    <div className="company-logo col-12 col-l-3">
+    <div className="company-logo col-12 col-m-4 col-l-3">
       <Link to="/">
         <img src={Logo} alt="" className="logo" />
         <span>Brand Name</span>
       </Link>
     </div>
-    <div className="utils-container queue end col-12 col-m-4 col-l-4">
+    <div className="utils-container queue end col-12 col-m-7 col-l-4">
       { renderUtilities() }
     </div>
     </nav>

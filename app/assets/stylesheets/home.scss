@@ -30,8 +30,26 @@ h4 {
   font-family: $font-title;
 }
 
+h1 {
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 0.8rem;
+}
+
 p {
   font-family: $font-text;
+  font-size: 0.8rem;
 }
 
 a,
@@ -116,7 +134,7 @@ nav {
       color: white;
     }
     img {
-      width: 10%;
+      width: 20%;
     }
   }
   span {
@@ -129,8 +147,12 @@ nav {
 }
 
 header {
-  // height: 90vh;
-  background: image-url('header-cellphone.png') no-repeat center ;
+  height:85vh;
+  background: 
+    linear-gradient(to top, rgba(245, 246, 252, 0), rgba(117, 19, 93, 0.73)),
+    image-url('header-cellphone.png'),
+    no-repeat,
+    center ;
   background-size: 110% !important;
   background-position: top;
   h1 {
@@ -138,11 +160,17 @@ header {
     font-family: $font-title;
   }
   @media screen and (min-device-width: 426px) {
-    min-height:90vh;
-    max-height: 100vh;
+    height: auto;
+    min-height:50vh;
     padding: 0 !important;
     background: image-url('header-desk.png') no-repeat;
-    background-position: center;
+    background-position: top;
+  }
+  @media screen and (min-device-width: 1024px) {
+    min-height:75vh;
+  }
+  @media screen and (min-device-width: 1440px) {
+    min-height:100vh;
   }
 }
 
@@ -188,6 +216,9 @@ footer {
 
 .content-pic {
   border-radius: 10px; 
+  @media screen and(max-device-width: 1023px)  {
+  }
+
 }
 
 .profile-container {
@@ -195,14 +226,19 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0.8rem;
   .profile {
   }
   button {
     padding: 1rem; 
+    margin: auto;
     background-color: $color-soft-yellow;
     border-radius: 4px;
   }
   form  {
+    label {
+      
+    }
     button  {
       background-color: $color-sweet-red;
       color: whitesmoke;
@@ -225,6 +261,7 @@ footer {
   padding: 1rem;
   img {
     background-color: white;
+    margin: auto;
     width: 100%;
     border-radius: 50%;
     border: solid lightgray 3px;

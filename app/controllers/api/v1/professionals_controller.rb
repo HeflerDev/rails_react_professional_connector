@@ -40,7 +40,7 @@ class Api::V1::ProfessionalsController < ApplicationController
   def destroy
     @professional ||= Professional.find(params[:id])
     @professional.destroy
-    render json: { message: 'Professional Deleted' }
+    render json: { message: 'deleted' }
   end
 
   private

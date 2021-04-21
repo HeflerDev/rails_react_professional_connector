@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :appointments, only: %i[create show destroy]
+
   get '/user/appointments', to: 'appointments#user_appointments'
   resources :users, only: %i[create show index]
 

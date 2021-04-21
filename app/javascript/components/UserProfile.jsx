@@ -37,7 +37,7 @@ const ConnectedUserProfile = ({history, user, isLoggedIn}) => {
     <div className="stack">
       <h2>Hello, {user.username} !</h2>
       <h3>Your Schedule is bellow</h3>
-      <div className="board">
+      <div className="board center">
         {
           appointments.map((item, index) => (
             <div key={item.schedule} className={`col-10 col-m-6 ${styleRow(index)}`}>

@@ -79,11 +79,11 @@ const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {param
         if (isLoggedIn) {
           return(
             <div className="stack">
-              <form className="stack" onSubmit={handleSubmit}>
-                <label htmlFor="datepick">
-                  <p>
+              <form className="board" onSubmit={handleSubmit}>
+                <label htmlFor="datepick" className="col-12">
+                  <h3>
                     Time and Date:
-                  </p>
+                  </h3>
                   <input
                     type="datetime-local"
                     name="schedule"
@@ -133,7 +133,7 @@ const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {param
             <button onClick={handleClick}>Make Schedule</button>
           </div>
         </div>
-        <div className="col-5 queue center">
+        <div className="col-12 queue center">
           { renderForm() }
         </div>
       </div>

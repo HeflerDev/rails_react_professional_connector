@@ -11,6 +11,9 @@ const ProfessionalsSelector = ({ data }) => {
     currency,
     working_days,
   } = data;
+
+
+
   return (
     <div className="selector-container">
       <Link to={`/show/${id}`} className="board center container">

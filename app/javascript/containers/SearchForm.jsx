@@ -53,7 +53,7 @@ const SearchForm = () => {
           </select>
         </label>
       </div>
-      <div className="col-4 queue center">
+      <div className="col-m-4 queue center">
         <button type="submit" onSubmit={handleSubmit}>Submit</button>
       </div>
     </form>
