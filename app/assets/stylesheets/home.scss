@@ -151,9 +151,9 @@ header {
   background: 
     linear-gradient(to top, rgba(245, 246, 252, 0), rgba(117, 19, 93, 0.73)),
     image-url('header-cellphone.png'),
-    no-repeat,
     center ;
   background-size: 110% !important;
+  background-repeat: no-repeat;
   background-position: top;
   h1 {
     color: white;
