@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when rendering home it renders correctly 1`] = `
+Array [
+  <header>
+    <h1
+      className="queue center"
+    >
+      Connect with professionals from around the world!
+    </h1>
+    <div
+      className="search-form-container queue center"
+    >
+      <form
+        className="board"
+        onSubmit={[Function]}
+      >
+        <div
+          className="col-7 queue"
+        >
+          <label
+            htmlFor="category"
+          >
+            <h4>
+              Category:
+               
+            </h4>
+            <select
+              id="category"
+              name="selectedCategory"
+              onChange={[Function]}
+            >
+              <option
+                value=""
+              >
+                -- Select a Category --
+              </option>
+            </select>
+          </label>
+        </div>
+        <div
+          className="col-m-4 queue center"
+        >
+          <button
+            onSubmit={[Function]}
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </header>,
+  <div
+    className="stack"
+  >
+    <div>
+      <hr />
+      <h1>
+        How does it work?
+      </h1>
+      <div
+        className="board even"
+      >
+        <div
+          className="col-12 col-m-6 col-l-4 queue column center"
+        >
+          <img
+            alt=""
+            className="content-pic"
+            src=""
+          />
+        </div>
+        <div
+          className="col-12 col-m-6 col-l-5 queue column"
+        >
+          <h2>
+            We connect you with a professional (of any area) in an hour session.
+          </h2>
+          <p>
+            Be it to learn something new, or to chat with an engineer about about... engines maybe?
+             
+            Here you can schedule a session and connect with a professional in any area, from a nurse to a guitarrist, exchanging ideas about anything.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <footer
+    className="queue"
+  />,
+]
+`;

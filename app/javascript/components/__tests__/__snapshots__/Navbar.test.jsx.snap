@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when rendering navbar it renders correctly 1`] = `
+<nav
+  className="board queue between"
+>
+  <div
+    className="company-logo col-12 col-m-4 col-l-3"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt=""
+        className="logo"
+        src=""
+      />
+      <span>
+        Brand Name
+      </span>
+    </a>
+  </div>
+  <div
+    className="utils-container queue end col-12 col-m-7 col-l-4"
+  >
+    <a
+      className="queue center"
+      href="/signup"
+      onClick={[Function]}
+    >
+      <span>
+        Sign Up!
+      </span>
+    </a>
+    <a
+      className="queue center"
+      href="/login"
+      onClick={[Function]}
+    >
+      <span>
+        Login
+      </span>
+    </a>
+  </div>
+</nav>
+`;
