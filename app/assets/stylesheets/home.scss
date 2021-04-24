@@ -3,15 +3,16 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Quicksand:wght@300&display=swap');
+
 /* Color Theme Swatches in Hex */
-$color-sweet-red: #F23D4C;
-$color-sweet-red-dark: rgba(160,50,80, 1);
-$color-blue-strong: #307B8C;
-$color-blue-strong-5: rgba(36,111,128, 1);
+$color-sweet-red: #f23d4c;
+$color-sweet-red-dark: rgba(160, 50, 80, 1);
+$color-blue-strong: #307b8c;
+$color-blue-strong-5: rgba(36, 111, 128, 1);
 $color-blue-soft: gray;
-$color-green-android: #03A688;
-$color-soft-yellow: #F2DE79;
-$color-soft-yellow-5: rgba(169,100,50, 1);
+$color-green-android: #03a688;
+$color-soft-yellow: #f2de79;
+$color-soft-yellow-5: rgba(169, 100, 50, 1);
 $font-text: 'Lora', serif;
 $font-title: 'Quicksand', sans-serif;
 
@@ -56,11 +57,13 @@ a,
 button {
   text-decoration: none;
   background-color: $color-blue-strong-5;
+
   span {
-    text-decoration:none !important;
+    text-decoration: none !important;
     color: white;
+
     &:hover {
-      text-decoration:none !important;
+      text-decoration: none !important;
     }
   }
 }
@@ -96,79 +99,93 @@ hr {
 
 nav {
   font-size: 18px;
-  font-weight:bold;
+  font-weight: bold;
   background-color: $color-sweet-red;
   color: white;
   font-family: $font-title;
   text-decoration: none;
+
+  span {
+    cursor: pointer;
+
+    &:hover {
+      transition: 0.2s;
+      background-color: $color-green-android;
+    }
+  }
+
   .queue {
     margin: 0;
     padding: 0;
     // background-color: rgba(220,20,30,0.2);
     background-color: rgba($color: $color-blue-soft, $alpha: 0.3);
+
     span {
       margin: auto;
       border-radius: 10px;
       padding: 0.5rem;
-    } 
+    }
   }
+
   .utils-container {
     color: white;
     margin: 0;
     border: solid $color-sweet-red-dark 5px;
     padding: 0;
     height: 100%;
+
     button {
       background-color: $color-sweet-red-dark;
+
       span {
         background-color: $color-sweet-red-dark;
       }
     }
   }
+
   .company-logo {
     font-size: 24px;
+
     a {
       cursor: default;
       color: white;
     }
+
     img {
       width: 20%;
-    }
-  }
-  span {
-    cursor: pointer;
-    &:hover {
-      transition: 0.2s;
-      background-color: $color-green-android;
     }
   }
 }
 
 header {
-  height:85vh;
-  background: 
+  height: 85vh;
+  background:
     linear-gradient(to top, rgba(245, 246, 252, 0), rgba(117, 19, 93, 0.73)),
     image-url('header-cellphone.png'),
-    center ;
+    center;
   background-size: 110% !important;
   background-repeat: no-repeat;
   background-position: top;
+
   h1 {
     color: white;
     font-family: $font-title;
   }
+
   @media screen and (min-device-width: 426px) {
     height: auto;
-    min-height:50vh;
+    min-height: 50vh;
     padding: 0 !important;
     background: image-url('header-desk.png') no-repeat;
     background-position: top;
   }
+
   @media screen and (min-device-width: 1024px) {
-    min-height:75vh;
+    min-height: 75vh;
   }
+
   @media screen and (min-device-width: 1440px) {
-    min-height:100vh;
+    min-height: 100vh;
   }
 }
 
@@ -184,18 +201,22 @@ footer {
 .selector-container {
   margin: 1rem;
   padding: 0.5rem;
+
   .container {
     transition: 0.1s;
     border-radius: 6px;
-    border:solid $color-sweet-red 0.3rem;
+    border: solid $color-sweet-red 0.3rem;
+
     &:hover {
       transition: 0.2s;
       transform: scale(1.05);
     }
   }
+
   span {
     color: black;
   }
+
   img {
     border: solid lightgray 5px;
     width: 100%;
@@ -213,10 +234,10 @@ footer {
 }
 
 .content-pic {
-  border-radius: 10px; 
+  border-radius: 10px;
+
   @media screen and(max-device-width: 1023px)  {
   }
-
 }
 
 .profile-container {
@@ -225,24 +246,25 @@ footer {
   flex-direction: column;
   justify-content: center;
   padding: 0.8rem;
+
   .profile {
   }
+
   button {
-    padding: 1rem; 
+    padding: 1rem;
     margin: auto;
     background-color: $color-soft-yellow;
     border-radius: 4px;
   }
-  form  {
-    label {
-      
-    }
-    button  {
+
+  form {
+    button {
       background-color: $color-sweet-red;
       color: whitesmoke;
       font-weight: bold;
     }
   }
+
   img {
     border-radius: 50%;
   }
@@ -250,25 +272,29 @@ footer {
 
 .company-logo {
   height: 100%;
+
   .logo {
     height: 100%;
   }
 }
 
 .signup-form {
-  color: $color-sweet-red-dark; 
+  color: $color-sweet-red-dark;
   min-height: 60vh;
   background-color: rgba($color: $color-sweet-red, $alpha: 0.15);
+
   input {
     border: solid $color-green-android 1px;
     border-radius: 10px;
   }
+
   label {
     margin: 1rem 0;
   }
+
   button {
     background-color: $color-sweet-red;
-    color:white;
+    color: white;
     font-weight: bold;
     border-radius: 3px;
   }
@@ -276,6 +302,7 @@ footer {
 
 .appointment-container {
   padding: 1rem;
+
   img {
     background-color: white;
     margin: auto;
@@ -283,21 +310,25 @@ footer {
     border-radius: 50%;
     border: solid lightgray 3px;
   }
+
   .btn-attend {
     color: white;
     border-radius: 3px;
   }
+
   .btn-cancel {
     background-color: $color-sweet-red;
     color: white;
   }
+
   button {
-    margin:1rem auto;
+    margin: 1rem auto;
     height: auto;
     padding: 0.2rem;
-    width:100%;
+    width: 100%;
     bottom: 0 !important;
   }
+
   @media screen and(max-device-width: 1023px) {
     img {
       margin: auto;
@@ -307,25 +338,29 @@ footer {
 }
 
 .search-form-container {
-  form{
+  form {
     color: $color-blue-strong-5;
     background-color: $color-soft-yellow;
     border-radius: 0.5rem;
+
     div {
-      margin:0.2rem;
+      margin: 0.2rem;
     }
+
     label {
       margin: auto;
     }
+
     button {
       width: 85%;
       padding: 0.5rem;
       background-color: white;
       border-radius: 0.2rem;
     }
+
     select {
       background-color: white;
-      border-radius: 10px; 
+      border-radius: 10px;
       border: none;
     }
   }
