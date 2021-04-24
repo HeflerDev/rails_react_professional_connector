@@ -15,6 +15,7 @@ const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {param
     schedule: '',
     error: null,
   });
+  const [pageError, setPageError] = useState(null);
  
   useEffect(() => {
     axios.get(`/api/v1/show/${id}`)
@@ -25,7 +26,9 @@ const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {param
           throw new Error();
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        setPageError(err);
+      });
   }, []);
 
   if (profData) {
@@ -114,6 +117,13 @@ const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {param
       return null;
     }
 
+    if (pageError) {
+      return (
+        <div className="stack">
+          <p>Could not fetch user: { pageError }</p>
+        </div>
+      );
+    }
 
     return (
       <div className="profile-container">

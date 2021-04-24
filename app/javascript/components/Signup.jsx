@@ -31,7 +31,7 @@ const ConnectedSignup = ({ isLoggedIn, loginUser, history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { username, password, password_confirmation, errors} = userData;
+    const { username, password, password_confirmation } = userData;
     const user = {
       username: username,
       password: password,
@@ -68,28 +68,41 @@ const ConnectedSignup = ({ isLoggedIn, loginUser, history }) => {
   ));
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="stack center signup-form">
+    <label htmlFor="username" className="board center">
+    <div className="col-10">User Name:</div>
+    {' '}
+      <input
+        className="col-10"
+        type="text"
+        name="username"
+        value={username}
+        placeholder="User Name"
+        onChange={handleChange}
+      />
+    </label>
+    <label htmlFor="password" className="board center">
+    <div className="col-10">Password</div>
+      <input
+        className="col-10"
+        type="text"
+        name="password"
+        value={password}
+        placeholder="Password"
+        onChange={handleChange}
+      />
+    </label>
+    <label htmlFor="password_confirmation" className="board center">
+    <div className="col-10">Password Confirmation</div>
     <input
-      type="text"
-      name="username"
-      value={username}
-      placeholder="User Name"
-      onChange={handleChange}
-    />
-    <input
-      type="text"
-      name="password"
-      value={password}
-      placeholder="Password"
-      onChange={handleChange}
-    />
-    <input
+      className="col-10"
       type="text"
       name="password_confirmation"
       value={password_confirmation}
       placeholder="Password Confirmation"
       onChange={handleChange}
     />
+    </label>
     { handleErrors() }
     <button type="submit">
       Sign Up

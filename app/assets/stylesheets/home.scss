@@ -101,8 +101,6 @@ nav {
   color: white;
   font-family: $font-title;
   text-decoration: none;
-  margin: 0;
-  padding: 1px;
   .queue {
     margin: 0;
     padding: 0;
@@ -254,6 +252,25 @@ footer {
   height: 100%;
   .logo {
     height: 100%;
+  }
+}
+
+.signup-form {
+  color: $color-sweet-red-dark; 
+  min-height: 60vh;
+  background-color: rgba($color: $color-sweet-red, $alpha: 0.15);
+  input {
+    border: solid $color-green-android 1px;
+    border-radius: 10px;
+  }
+  label {
+    margin: 1rem 0;
+  }
+  button {
+    background-color: $color-sweet-red;
+    color:white;
+    font-weight: bold;
+    border-radius: 3px;
   }
 }
 

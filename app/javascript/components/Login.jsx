@@ -49,19 +49,21 @@ const ConnectedLogin = ({ loginUser, isLoggedIn, history }) => {
   const { username, password, error } = userData;
 
   return (
-    <form onSubmit={handleSubmit}>
-    <label htmlFor="username">
-      <span>Username</span>
+    <form onSubmit={handleSubmit} className="stack center signup-form">
+    <label htmlFor="username" className="board center">
+      <div className="col-10">User Name</div>
       <input
+        className="col-10"
         type="text"
         name="username"
         value={username}
         onChange={handleChange}
       />
     </label>
-    <label htmlFor="password">
-      <span>Password</span>
+    <label htmlFor="password" className="board center">
+      <div className="col-10">Password</div>
       <input
+        className="col-10"
         type="password"
         name="password"
         value={password}

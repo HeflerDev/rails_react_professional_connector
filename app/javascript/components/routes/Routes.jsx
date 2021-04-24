@@ -7,6 +7,7 @@ import ResultsPage from '../ResultsPage';
 import ProfessionalProfile from '../ProfessionalProfile';
 import Navbar from '../Navbar';
 import UserProfile from '../UserProfile';
+import Footer from '../subComponents/Footer';
 
 const Router = () => (
   <BrowserRouter>
@@ -19,6 +20,7 @@ const Router = () => (
       <Route path="/show/:id" component={ProfessionalProfile} />
       <Route path="/profile" component={UserProfile}/>
     </Switch>
+    <Footer />
   </BrowserRouter>
 );
 
