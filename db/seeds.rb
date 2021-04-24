@@ -8,11 +8,11 @@ require 'bcrypt'
   user.save
 end
 
-1000.times do
+3000.times do
   professional = Professional.new
   professional.name = Faker::Name.name
   professional.category = Faker::Company.profession
-  professional.description = Faker::Lorem.sentence(word_count: 20)
+  professional.description = Faker::Lorem.sentence(word_count: 10)
   professional.image = Faker::Avatar.image
   professional.hourly_wage = Faker::Commerce.price(range: 20...500)
   professional.currency = '$'
