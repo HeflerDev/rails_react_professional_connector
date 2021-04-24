@@ -8,19 +8,6 @@ require 'bcrypt'
   user.save
 end
 
-hefler = User.new
-hefler.username = 'hefler'
-hefler.password_digest = BCrypt::Password.create('hefler')
-hefler.save
-
-100.times do
-  point = Appointment.new
-  point.schedule = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
-  point.user_id = 101
-  point.professional_id = 4
-  point.save
-end
-
 1000.times do
   professional = Professional.new
   professional.name = Faker::Name.name
