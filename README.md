@@ -10,7 +10,9 @@ It's the React course Capstone project from [Microverse](https://www.microverse.
 - JavaScript
 - React
 - Redux
-- NPM
+- NPM/yarn
+- Ruby
+- Ruby on Rails
 - JSX
 - CSS
 - CSSTack
