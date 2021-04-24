@@ -2,6 +2,7 @@
   "name": "rails-react-professional-connector",
   "private": true,
   "dependencies": {
+    "@babel/preset-react": "^7.13.13",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -14,11 +15,10 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.3",
-    "@babel/preset-react": "^7.13.13",
     "react-router-dom": "^5.2.0",
+    "react-test-renderer": "^17.0.2",
     "react_ujs": "^2.6.1",
     "redux": "^4.0.5",
-    "react-test-renderer": "^17.0.2",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
@@ -36,7 +36,10 @@
     "webpack-dev-server": "^3.11.2"
   },
   "jest": {
-    "modulePathIgnorePatterns": ["__mocks__", "config"],
+    "modulePathIgnorePatterns": [
+      "__mocks__",
+      "config"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/app/javascript/components/__tests__/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/app/javascript/components/__tests__/__mocks__/fileMock.js"
