@@ -1,7 +1,6 @@
 {
   "name": "rails-react-professional-connector",
   "private": true,
-  "proxy": "http://localhost:3001",
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -37,6 +36,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "jest": {
+    "modulePathIgnorePatterns": ["__mocks__", "config"],
     "moduleNameMapper": {
       "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/app/javascript/components/__tests__/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/app/javascript/components/__tests__/__mocks__/fileMock.js"

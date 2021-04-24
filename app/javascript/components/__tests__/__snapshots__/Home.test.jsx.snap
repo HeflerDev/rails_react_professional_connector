@@ -86,8 +86,5 @@ Array [
       </div>
     </div>
   </div>,
-  <footer
-    className="queue"
-  />,
 ]
 `;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`when rendering login it renders correctly 1`] = `
+exports[`when visiting the page 1`] = `
 <form
   className="stack center signup-form"
   onSubmit={[Function]}
@@ -12,12 +12,14 @@ exports[`when rendering login it renders correctly 1`] = `
     <div
       className="col-10"
     >
-      User Name
+      User Name:
     </div>
+     
     <input
       className="col-10"
       name="username"
       onChange={[Function]}
+      placeholder="User Name"
       type="text"
       value=""
     />
@@ -35,14 +37,33 @@ exports[`when rendering login it renders correctly 1`] = `
       className="col-10"
       name="password"
       onChange={[Function]}
-      type="password"
+      placeholder="Password"
+      type="text"
+      value=""
+    />
+  </label>
+  <label
+    className="board center"
+    htmlFor="password_confirmation"
+  >
+    <div
+      className="col-10"
+    >
+      Password Confirmation
+    </div>
+    <input
+      className="col-10"
+      name="password_confirmation"
+      onChange={[Function]}
+      placeholder="Password Confirmation"
+      type="text"
       value=""
     />
   </label>
   <button
     type="submit"
   >
-    Submit
+    Sign Up
   </button>
 </form>
 `;
