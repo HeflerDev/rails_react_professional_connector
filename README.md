@@ -19,7 +19,7 @@ It's the React course Capstone project from [Microverse](https://www.microverse.
 
 ## Live Demo
 
-[Live Demo Link](https://stocksmicroverse.netlify.app/)
+[Live Demo Link](https://professional-connector.herokuapp.com/)
 
 
 To get a local copy up and running follow these simple example steps.
