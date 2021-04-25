@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
@@ -51,6 +53,7 @@ h4 {
 p {
   font-family: $font-text;
   font-size: 0.8rem;
+  padding: 1rem;
 }
 
 a,
@@ -97,72 +100,22 @@ hr {
   border-color: $color-sweet-red;
 }
 
-nav {
-  font-size: 18px;
-  font-weight: bold;
-  background-color: $color-sweet-red;
-  color: white;
-  font-family: $font-title;
-  text-decoration: none;
+.company-logo {
+  height: 100%;
 
-  span {
-    cursor: pointer;
-
-    &:hover {
-      transition: 0.2s;
-      background-color: $color-green-android;
-    }
-  }
-
-  .queue {
-    margin: 0;
-    padding: 0;
-    // background-color: rgba(220,20,30,0.2);
-    background-color: rgba($color: $color-blue-soft, $alpha: 0.3);
-
-    span {
-      margin: auto;
-      border-radius: 10px;
-      padding: 0.5rem;
-    }
-  }
-
-  .utils-container {
-    color: white;
-    margin: 0;
-    border: solid $color-sweet-red-dark 5px;
-    padding: 0;
+  .logo {
     height: 100%;
-
-    button {
-      background-color: $color-sweet-red-dark;
-
-      span {
-        background-color: $color-sweet-red-dark;
-      }
-    }
-  }
-
-  .company-logo {
-    font-size: 24px;
-
-    a {
-      cursor: default;
-      color: white;
-    }
-
-    img {
-      width: 20%;
-    }
   }
 }
 
 header {
   height: 85vh;
+  /* stylelint-disable */
   background:
     linear-gradient(to top, rgba(245, 246, 252, 0), rgba(117, 19, 93, 0.73)),
     image-url('header-cellphone.png'),
     center;
+  /* stylelint-enable */
   background-size: 110% !important;
   background-repeat: no-repeat;
   background-position: top;
@@ -176,7 +129,8 @@ header {
     height: auto;
     min-height: 50vh;
     padding: 0 !important;
-    background: image-url('header-desk.png') no-repeat;
+    background-image: image-url('header-desk.png'); /* stylelint-disable-line */
+    background-repeat: no-repeat;
     background-position: top;
   }
 
@@ -187,10 +141,6 @@ header {
   @media screen and (min-device-width: 1440px) {
     min-height: 100vh;
   }
-}
-
-p {
-  padding: 1rem;
 }
 
 footer {
@@ -235,9 +185,6 @@ footer {
 
 .content-pic {
   border-radius: 10px;
-
-  @media screen and(max-device-width: 1023px)  {
-  }
 }
 
 .profile-container {
@@ -246,9 +193,6 @@ footer {
   flex-direction: column;
   justify-content: center;
   padding: 0.8rem;
-
-  .profile {
-  }
 
   button {
     padding: 1rem;
@@ -267,14 +211,6 @@ footer {
 
   img {
     border-radius: 50%;
-  }
-}
-
-.company-logo {
-  height: 100%;
-
-  .logo {
-    height: 100%;
   }
 }
 
@@ -333,6 +269,66 @@ footer {
     img {
       margin: auto;
       width: 50%;
+    }
+  }
+}
+
+nav {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: $color-sweet-red;
+  color: white;
+  font-family: $font-title;
+  text-decoration: none;
+
+  span {
+    cursor: pointer;
+
+    &:hover {
+      transition: 0.2s;
+      background-color: $color-green-android;
+    }
+  }
+
+  .queue {
+    margin: 0;
+    padding: 0;
+    // background-color: rgba(220,20,30,0.2);
+    background-color: rgba($color: $color-blue-soft, $alpha: 0.3);
+
+    span {
+      margin: auto;
+      border-radius: 10px;
+      padding: 0.5rem;
+    }
+  }
+
+  .utils-container {
+    color: white;
+    margin: 0;
+    border: solid $color-sweet-red-dark 5px;
+    padding: 0;
+    height: 100%;
+
+    button {
+      background-color: $color-sweet-red-dark;
+
+      span {
+        background-color: $color-sweet-red-dark;
+      }
+    }
+  }
+
+  .company-logo {
+    font-size: 24px;
+
+    a {
+      cursor: default;
+      color: white;
+    }
+
+    img {
+      width: 20%;
     }
   }
 }
