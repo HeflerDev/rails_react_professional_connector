@@ -85,7 +85,7 @@ const ConnectedSignup = ({ isLoggedIn, loginUser, history }) => {
     <div className="col-10">Password</div>
       <input
         className="col-10"
-        type="text"
+        type="password"
         name="password"
         value={password}
         placeholder="Password"
@@ -96,7 +96,7 @@ const ConnectedSignup = ({ isLoggedIn, loginUser, history }) => {
     <div className="col-10">Password Confirmation</div>
     <input
       className="col-10"
-      type="text"
+      type="password"
       name="password_confirmation"
       value={password_confirmation}
       placeholder="Password Confirmation"
