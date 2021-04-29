@@ -1,8 +1,7 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer className="queue">
-  </footer>
+  <footer className="queue" />
 );
 
 export default Footer;

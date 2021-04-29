@@ -1,14 +1,18 @@
+/* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isLoggedIn: state.userReducer.isLoggedIn,
-  user: state.userReducer.user.user
+  user: state.userReducer.user.user,
 });
 
-const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {params: {id}}}) => {
+const ConnectedProfessionalProfile = ({
+  history, user, isLoggedIn, match: { params: { id } },
+}) => {
   const [profData, setProfData] = useState(null);
   const [displayForm, setDisplayForm] = useState(null);
   const [formData, setFormData] = useState({
@@ -16,17 +20,17 @@ const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {param
     error: null,
   });
   const [pageError, setPageError] = useState(null);
- 
+
   useEffect(() => {
     axios.get(`/api/v1/show/${id}`)
-      .then(res => {
+      .then((res) => {
         if (res.statusText === 'OK') {
           setProfData(res.data);
         } else {
           throw new Error();
         }
       })
-      .catch(err => {
+      .catch((err) => {
         setPageError(err);
       });
   }, []);
@@ -39,12 +43,10 @@ const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {param
       image,
       hourly_wage,
       currency,
-      phone_number,
-      email,
       working_days,
     } = profData;
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
       e.preventDefault();
       const appointment = {
         user_id: user.id,
@@ -60,16 +62,16 @@ const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {param
               throw new Error();
             }
           })
-          .catch(err => ({...formData, error: err}));
+          .catch((err) => ({ ...formData, error: err }));
       } else {
-        setFormData({...formData, error: 'Date Can\'t be Blank'});
+        setFormData({ ...formData, error: 'Date Can\'t be Blank' });
         console.log(formData);
       }
     };
 
-    const handleChange = e => {
+    const handleChange = (e) => {
       const { name, value } = e.target;
-      setFormData({...formData, [name]: value});
+      setFormData({ ...formData, [name]: value });
     };
 
     const handleClick = () => {
@@ -77,10 +79,10 @@ const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {param
     };
 
     const renderForm = () => {
-      if(displayForm) {
+      if (displayForm) {
         const { schedule } = formData;
         if (isLoggedIn) {
-          return(
+          return (
             <div className="stack">
               <form className="board" onSubmit={handleSubmit}>
                 <label htmlFor="datepick" className="col-12">
@@ -94,65 +96,88 @@ const ConnectedProfessionalProfile = ({ history, user, isLoggedIn, match: {param
                     onChange={handleChange}
                   />
                 </label>
-                <button type="submit">Hire {name}!</button>
+                <button type="submit">
+                  Hire
+                  {name}
+                  !
+                </button>
               </form>
               <div>
                 { formData.error }
               </div>
             </div>
           );
-        } else {
-          return(
-            <>
+        }
+        return (
+          <>
             <p>
               In order to Schedule a session with a professional,
               {' '}
               you must log in.
             </p>
-            <p><Link to="/login">Click Here</Link> to log in.</p>
-            </>
-          );
-        }
+            <p>
+              <Link to="/login">Click Here</Link>
+              {' '}
+              to log in.
+            </p>
+          </>
+        );
       }
       return null;
-    }
+    };
 
     if (pageError) {
       return (
         <div className="stack">
-          <p>Could not fetch user: { pageError }</p>
+          <p>
+            Could not fetch user:
+            { pageError }
+          </p>
         </div>
       );
     }
 
     return (
       <div className="profile-container">
-      <div className="board center profile">
-        <div className="col-l-5 queue center">
-          <img src={image} alt="profile_pic" />
-        </div>
-        <div className="col-l-5">
-          <h1>{name}</h1>
-          <h2>{category}</h2>
-          <p>{ description }</p>
-          <div className="queue center">{working_days}</div>
-          <div className="queue between">
-            <div>
-              Wage: {`${hourly_wage} ${currency}`}
+        <div className="board center profile">
+          <div className="col-l-5 queue center">
+            <img src={image} alt="profile_pic" />
+          </div>
+          <div className="col-l-5">
+            <h1>{name}</h1>
+            <h2>{category}</h2>
+            <p>{ description }</p>
+            <div className="queue center">{working_days}</div>
+            <div className="queue between">
+              <div>
+                Wage:
+                {' '}
+                {`${hourly_wage} ${currency}`}
+              </div>
+              <button type="button" onClick={handleClick}>Make Schedule</button>
             </div>
-            <button onClick={handleClick}>Make Schedule</button>
+          </div>
+          <div className="col-12 queue center">
+            { renderForm() }
           </div>
         </div>
-        <div className="col-12 queue center">
-          { renderForm() }
-        </div>
-      </div>
       </div>
 
     );
   }
 
-  return <>Loading...</>
+  return <>Loading...</>;
+};
+
+ConnectedProfessionalProfile.propTypes = {
+  history: PropTypes.func.isRequired,
+  user: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 const ProfessionalProfile = connect(mapStateToProps)(ConnectedProfessionalProfile);
