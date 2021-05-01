@@ -1,9 +1,11 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import loadingGif from '../../../assets/gifs/loading.gif';
 
 const ProfessionalsSelector = ({ data }) => {
+  const [loaded, setLoaded] = useState(false);
   const {
     id,
     category,
@@ -14,11 +16,26 @@ const ProfessionalsSelector = ({ data }) => {
     working_days,
   } = data;
 
+  /* eslint-disable */
+
+  useEffect(() => {
+    return () => {
+      setLoaded(false);
+    }
+  }, []);
+
+  /* eslint-enable */
+  /* eslint-disable camelcase */
+
   return (
     <div className="selector-container">
       <Link to={`/show/${id}`} className="board center container">
         <div className="col-l-10 queue center">
-          <img src={image} alt="profile pic" />
+          <img
+            src={loaded ? image : loadingGif}
+            onLoad={() => setLoaded(true)}
+            alt="profile pic"
+          />
         </div>
         <div className="col-l-11">
           <span>{name}</span>
@@ -41,7 +58,7 @@ ProfessionalsSelector.propTypes = {
     category: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    hourly_wage: PropTypes.string.isRequired,
+    hourly_wage: PropTypes.number.isRequired,
     currency: PropTypes.string.isRequired,
     working_days: PropTypes.string.isRequired,
   }).isRequired,

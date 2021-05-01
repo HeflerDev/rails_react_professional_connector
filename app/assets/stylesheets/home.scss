@@ -26,6 +26,13 @@ html {
   font-size: 16px !important;
 }
 
+main {
+  min-height: 100vh;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 h1,
 h2,
 h3,
@@ -145,7 +152,17 @@ header {
 
 footer {
   background-color: $color-blue-strong;
-  min-height: 10rem;
+  color: white;
+  bottom: 0;
+  margin: 0 !important;
+  padding: 1rem 1rem 0 1rem;
+
+  li {
+    &:hover {
+      text-decoration: line-through;
+      cursor: pointer;
+    }
+  }
 }
 
 .selector-container {
@@ -155,11 +172,13 @@ footer {
   .container {
     transition: 0.1s;
     border-radius: 6px;
-    border: solid $color-sweet-red 0.3rem;
+    border: solid $color-soft-yellow 2px;
+    background-color: rgba($color: $color-soft-yellow, $alpha: 0.25);
 
     &:hover {
       transition: 0.2s;
       transform: scale(1.05);
+      box-shadow: rgba($color: black, $alpha: 0.5) 10px 10px 4px 4px;
     }
   }
 

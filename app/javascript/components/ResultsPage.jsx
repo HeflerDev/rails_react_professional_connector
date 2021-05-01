@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import ProfessionalsSelector from './subComponents/ProfessionalSelector';
+import loadingGif from '../../assets/gifs/loading.gif';
 
 const ResultsPage = ({ match: { params: { query } } }) => {
   const [dataArray, setDataArray] = useState(null);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     axios.get(`/api/v1/professionals/categories/${query}`)
@@ -15,11 +17,11 @@ const ResultsPage = ({ match: { params: { query } } }) => {
           throw new Error();
         }
       })
-      .then(() => setDataArray({ ...dataArray, redirect: true }))
+      .then(() => setLoaded(true))
       .catch((err) => err);
-  }, []);
+  }, [query]);
 
-  return dataArray ? (
+  return dataArray && loaded ? (
     <div className="board">
       {
         dataArray.map((obj) => (
@@ -31,7 +33,9 @@ const ResultsPage = ({ match: { params: { query } } }) => {
     </div>
   ) : (
     <>
-      Loading ...
+      <div className="queue center">
+        <img src={loadingGif} alt="" />
+      </div>
     </>
   );
 };

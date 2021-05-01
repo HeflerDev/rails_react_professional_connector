@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <Provider store={store}>
       <App />
     </Provider>,
-    document.body.appendChild(document.createElement('div')),
+    document.body.appendChild(document.createElement('main')),
   );
 });
 
