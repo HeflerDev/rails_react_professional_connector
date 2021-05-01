@@ -12,7 +12,7 @@ const select = (dispatch) => ({
 
 const ConnectedApp = ({ loginUser }) => {
   useEffect(() => {
-    axios.get('http://localhost:3001/logged_in',
+    axios.get('/logged_in',
       { withCredentials: true })
       .then((response) => {
         if (response.data.logged_in) {
