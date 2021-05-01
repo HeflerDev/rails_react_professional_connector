@@ -1,5 +1,10 @@
 {
   "name": "rails-react-professional-connector",
+  "version": "1.0.0",
+  "engines": {
+    "yarn": "1.x",
+    "npm": "6.x"
+  },
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.13.13",
