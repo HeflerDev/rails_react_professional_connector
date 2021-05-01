@@ -37,7 +37,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: $font-title;
+  font-family: $font-title !important;
 }
 
 h1 {
@@ -305,7 +305,7 @@ nav {
 
     &:hover {
       transition: 0.2s;
-      background-color: $color-green-android;
+      transform: scale(1.05);
     }
   }
 
