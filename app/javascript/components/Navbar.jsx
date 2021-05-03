@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -19,39 +19,47 @@ const select = (dispatch) => ({
 const ConnectedNavbar = ({
   isLoggedIn, user, logoutUser,
 }) => {
+  const [utils, setUtils] = useState(null);
+
   const handleClick = () => {
-    axios.delete('http://localhost:3001/logout', { withCredentials: true })
+    axios.delete('/logout', { withCredentials: true })
       .then(() => {
         logoutUser();
       });
   };
 
-  const renderUtilities = () => (isLoggedIn ? (
-    <>
-      <div className="queue center">
-        <div className="hello-text">
-          Hello,
-          { user.username }
-          !
-        </div>
-      </div>
-      <Link to="/profile" className="queue center">
-        <span>Profile</span>
-      </Link>
-      <button type="button" onClick={handleClick}>
-        <span>Logout</span>
-      </button>
-    </>
-  ) : (
-    <>
-      <Link to="/signup" className="queue center">
-        <span>Sign Up!</span>
-      </Link>
-      <Link to="/login" className="queue center">
-        <span>Login</span>
-      </Link>
-    </>
-  ));
+  useEffect(() => {
+    if (isLoggedIn && user) {
+      setUtils(
+        <>
+          <div className="queue center">
+            <div className="hello-text">
+              Hello,
+              { user.username }
+              !
+            </div>
+          </div>
+          <Link to="/profile" className="queue center">
+            <span>Profile</span>
+          </Link>
+          <button type="button" onClick={handleClick}>
+            <span>Logout</span>
+          </button>
+        </>,
+      );
+    } else {
+      setUtils(
+        <>
+          <Link to="/signup" className="queue center">
+            <span>Sign Up!</span>
+          </Link>
+          <Link to="/login" className="queue center">
+            <span>Login</span>
+          </Link>
+        </>,
+      );
+    }
+  });
 
   return (
     <nav className="board queue between">
@@ -62,7 +70,7 @@ const ConnectedNavbar = ({
         </Link>
       </div>
       <div className="utils-container queue end col-12 col-m-7 col-l-4">
-        { renderUtilities() }
+        { utils }
       </div>
     </nav>
   );

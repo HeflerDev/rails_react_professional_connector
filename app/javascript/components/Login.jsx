@@ -76,8 +76,8 @@ const ConnectedLogin = ({ loginUser, isLoggedIn, history }) => {
 
 ConnectedLogin.propTypes = {
   loginUser: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.func.isRequired,
-  history: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  history: PropTypes.object,
 };
 
 const Login = connect(mapStateToProps, select)(ConnectedLogin);

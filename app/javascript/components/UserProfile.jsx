@@ -60,8 +60,8 @@ const ConnectedUserProfile = ({ user, isLoggedIn }) => {
 };
 
 ConnectedUserProfile.propTypes = {
-  user: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.func.isRequired,
+  user: PropTypes.object,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 const UserProfile = connect(mapStateToProps)(ConnectedUserProfile);

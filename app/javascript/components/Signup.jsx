@@ -40,11 +40,11 @@ const ConnectedSignup = ({ isLoggedIn, loginUser, history }) => {
       .then((response) => {
         if (response.data.status === 'created') {
           loginUser(response.data.user);
-          history.push('/');
         } else {
           throw new Error();
         }
       })
+      .then(() => history.push('/'))
       .catch((err) => setUserData({ ...userData, errors: [err] }));
   };
 
@@ -118,8 +118,8 @@ const ConnectedSignup = ({ isLoggedIn, loginUser, history }) => {
 
 ConnectedSignup.propTypes = {
   loginUser: PropTypes.func.isRequired,
-  history: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.func.isRequired,
+  history: PropTypes.object,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 const Signup = connect(mapStateToProps, select)(ConnectedSignup);
