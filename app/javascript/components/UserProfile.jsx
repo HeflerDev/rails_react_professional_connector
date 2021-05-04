@@ -34,14 +34,6 @@ const ConnectedUserProfile = ({ user, isLoggedIn }) => {
     return '';
   };
 
-  if (appointments.length === 0) {
-    return (
-      <div className="queue center">
-        <h3>No Appointments to Display Here</h3>
-      </div>
-    );
-  }
-
   return (isLoggedIn && loaded ? (
     <div className="stack">
       <h2>
