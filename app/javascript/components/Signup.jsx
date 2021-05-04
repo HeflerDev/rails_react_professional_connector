@@ -118,7 +118,7 @@ const ConnectedSignup = ({ isLoggedIn, loginUser, history }) => {
 
 ConnectedSignup.propTypes = {
   loginUser: PropTypes.func.isRequired,
-  history: PropTypes.object,
+  history: PropTypes.objectOf(PropTypes.array).isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
 };
 

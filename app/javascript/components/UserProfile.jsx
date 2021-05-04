@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Appointment from './subComponents/Appointment';
+import loadingGif from '../../assets/gifs/loading_2.gif';
 
 const mapStateToProps = (state) => ({
-  user: state.userReducer.user.user,
+  user: state.userReducer.userData,
   isLoggedIn: state.userReducer.isLoggedIn,
 });
 
 const ConnectedUserProfile = ({ user, isLoggedIn }) => {
   const [loaded, setLoaded] = useState(false);
-  const [appointments, setAppointments] = useState(['No Appointments Registered']);
+  const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
     axios.get('/user/appointments')
@@ -32,6 +33,14 @@ const ConnectedUserProfile = ({ user, isLoggedIn }) => {
     }
     return '';
   };
+
+  if (appointments.length === 0) {
+    return (
+      <div className="queue center">
+        <h3>No Appointments to Display Here</h3>
+      </div>
+    );
+  }
 
   return (isLoggedIn && loaded ? (
     <div className="stack">
@@ -54,14 +63,26 @@ const ConnectedUserProfile = ({ user, isLoggedIn }) => {
     </div>
   ) : (
     <>
-      Loading...
+      <div className="queue center">
+        <img src={loadingGif} alt="Loading" />
+      </div>
     </>
   ));
 };
 
 ConnectedUserProfile.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.shape({
+    username: PropTypes.string,
+    id: PropTypes.number,
+  }),
   isLoggedIn: PropTypes.bool.isRequired,
+};
+
+ConnectedUserProfile.defaultProps = {
+  user: {
+    username: null,
+    id: null,
+  },
 };
 
 const UserProfile = connect(mapStateToProps)(ConnectedUserProfile);

@@ -34,7 +34,7 @@ const ResultsPage = ({ match: { params: { query } } }) => {
   ) : (
     <>
       <div className="queue center">
-        <img src={loadingGif} alt="" />
+        <img src={loadingGif} alt="Loading" />
       </div>
     </>
   );

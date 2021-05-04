@@ -37,7 +37,7 @@ const ConnectedLogin = ({ loginUser, isLoggedIn, history }) => {
       .then((res) => {
         if (res.data.logged_in) {
           loginUser(res.data.user);
-          history.push('/');
+          // history.push('/');
         } else {
           throw new Error();
         }

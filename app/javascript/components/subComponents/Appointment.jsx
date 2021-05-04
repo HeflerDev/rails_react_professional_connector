@@ -6,7 +6,6 @@ import axios from 'axios';
 
 const Appointment = ({ data }) => {
   const [profData, setProfData] = useState(null);
-  const [deleted, setDeleted] = useState(false);
 
   const {
     professional_id,
@@ -16,11 +15,12 @@ const Appointment = ({ data }) => {
 
   const handleCancel = () => {
     axios.delete(`http://localhost:3001/appointments/${id}`)
-      .then((res) => {
-        if (res.message === 'deleted') {
-          setDeleted(true);
+      .then((response) => {
+        if (response.data.message === 'deleted') {
+          setProfData(null);
+        } else {
+          throw new Error('Couldn\'t delete');
         }
-        throw new Error('Couldn\'t delete');
       })
       .catch((err) => console.log(err));
   };
@@ -39,10 +39,6 @@ const Appointment = ({ data }) => {
 
   const dateReg = schedule.match(/^\d+-\d+-\d+/g);
   const timeReg = schedule.match(/\d+:\d+:\d+/g);
-
-  if (deleted) {
-    return null;
-  }
 
   return profData ? (
     <div className="appointment-container">
@@ -68,9 +64,7 @@ const Appointment = ({ data }) => {
       </div>
     </div>
   ) : (
-    <>
-      <p>Loading...</p>
-    </>
+    null
   );
 };
 

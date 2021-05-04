@@ -16,7 +16,7 @@ const ConnectedApp = ({ loginUser }) => {
       { withCredentials: true })
       .then((response) => {
         if (response.data.logged_in) {
-          loginUser(response.data);
+          loginUser(response.data.user);
         } else {
           logoutUser(response.data);
         }

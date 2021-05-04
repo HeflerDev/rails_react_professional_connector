@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -7,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
   isLoggedIn: state.userReducer.isLoggedIn,
-  user: state.userReducer.user.user,
+  user: state.userReducer.userData,
 });
 
 const ConnectedProfessionalProfile = ({
@@ -57,7 +58,7 @@ const ConnectedProfessionalProfile = ({
         axios.post('http://localhost:3001/appointments', { appointment }, { withCredentials: true })
           .then((res) => {
             if (res.data.status === 'created') {
-              history.push('/');
+              history.push('/profile');
             } else {
               throw new Error();
             }
@@ -97,7 +98,8 @@ const ConnectedProfessionalProfile = ({
                   />
                 </label>
                 <button type="submit">
-                  Hire
+                  Schedule with
+                  {' '}
                   {name}
                   !
                 </button>
@@ -170,14 +172,23 @@ const ConnectedProfessionalProfile = ({
 };
 
 ConnectedProfessionalProfile.propTypes = {
-  history: PropTypes.func.isRequired,
-  user: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    username: PropTypes.string,
+    id: PropTypes.number,
+  }),
+  isLoggedIn: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+};
+
+ConnectedProfessionalProfile.defaultProps = {
+  user: {
+    username: null,
+    id: null,
+  },
 };
 
 const ProfessionalProfile = connect(mapStateToProps)(ConnectedProfessionalProfile);

@@ -34,7 +34,7 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment ||= Appointment.find(params[:id])
     @appointment.destroy
-    render json: { message: 'Appointment Deleted' }
+    render json: { message: 'deleted' }
   end
 
     private

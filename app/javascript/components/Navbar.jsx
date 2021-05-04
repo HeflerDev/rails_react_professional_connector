@@ -9,7 +9,7 @@ import Logo from '../../assets/images/logo.png';
 
 const mapStateToProps = (state) => ({
   isLoggedIn: state.userReducer.isLoggedIn,
-  user: state.userReducer.user.user,
+  userData: state.userReducer.userData,
 });
 
 const select = (dispatch) => ({
@@ -17,9 +17,9 @@ const select = (dispatch) => ({
 });
 
 const ConnectedNavbar = ({
-  isLoggedIn, user, logoutUser,
+  isLoggedIn, userData, logoutUser,
 }) => {
-  const [utils, setUtils] = useState(null);
+  const [utilsContainer, setUtilsContainer] = useState(null);
 
   const handleClick = () => {
     axios.delete('/logout', { withCredentials: true })
@@ -28,38 +28,42 @@ const ConnectedNavbar = ({
       });
   };
 
+  const renderLoggedIn = () => (
+    <>
+      <div className="queue center">
+        <div className="hello-text">
+          Hello,
+          { userData.username }
+          !
+        </div>
+      </div>
+      <Link to="/profile" className="queue center">
+        <span>Profile</span>
+      </Link>
+      <button type="button" onClick={handleClick}>
+        <span>Logout</span>
+      </button>
+    </>
+  );
+
+  const renderLoggedOut = () => (
+    <>
+      <Link to="/signup" className="queue center">
+        <span>Sign Up!</span>
+      </Link>
+      <Link to="/login" className="queue center">
+        <span>Login</span>
+      </Link>
+    </>
+  );
+
   useEffect(() => {
-    if (isLoggedIn && user) {
-      setUtils(
-        <>
-          <div className="queue center">
-            <div className="hello-text">
-              Hello,
-              { user.username }
-              !
-            </div>
-          </div>
-          <Link to="/profile" className="queue center">
-            <span>Profile</span>
-          </Link>
-          <button type="button" onClick={handleClick}>
-            <span>Logout</span>
-          </button>
-        </>,
-      );
+    if (isLoggedIn) {
+      setUtilsContainer(renderLoggedIn);
     } else {
-      setUtils(
-        <>
-          <Link to="/signup" className="queue center">
-            <span>Sign Up!</span>
-          </Link>
-          <Link to="/login" className="queue center">
-            <span>Login</span>
-          </Link>
-        </>,
-      );
+      setUtilsContainer(renderLoggedOut);
     }
-  });
+  }, [userData, isLoggedIn]);
 
   return (
     <nav className="board queue between">
@@ -70,7 +74,7 @@ const ConnectedNavbar = ({
         </Link>
       </div>
       <div className="utils-container queue end col-12 col-m-7 col-l-4">
-        { utils }
+        { utilsContainer }
       </div>
     </nav>
   );
@@ -79,14 +83,10 @@ const ConnectedNavbar = ({
 ConnectedNavbar.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  user: PropTypes.shape({
+  userData: PropTypes.shape({
     id: PropTypes.number.isRequired,
     username: PropTypes.string.isRequired,
   }),
-};
-
-ConnectedNavbar.defaultProps = {
-  user: null,
 };
 
 const Navbar = connect(mapStateToProps, select)(ConnectedNavbar);
