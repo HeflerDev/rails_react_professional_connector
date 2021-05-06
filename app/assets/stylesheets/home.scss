@@ -1,0 +1,382 @@
+/* stylelint-disable no-descending-specificity */
+
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Quicksand:wght@300&display=swap');
+
+/* Color Theme Swatches in Hex */
+$color-sweet-red: #f23d4c;
+$color-sweet-red-dark: rgba(160, 50, 80, 1);
+$color-blue-strong: #307b8c;
+$color-blue-strong-5: rgba(36, 111, 128, 1);
+$color-blue-soft: gray;
+$color-green-android: #03a688;
+$color-soft-yellow: #f2de79;
+$color-soft-yellow-5: rgba(169, 100, 50, 1);
+$font-text: 'Lora', serif;
+$font-title: 'Quicksand', sans-serif;
+
+* {
+  text-decoration: none !important;
+}
+
+html {
+  font-size: 16px !important;
+}
+
+main {
+  min-height: 100vh;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $font-title !important;
+}
+
+h1 {
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 0.8rem;
+}
+
+p {
+  font-family: $font-text;
+  font-size: 0.8rem;
+  padding: 1rem;
+}
+
+a,
+button {
+  text-decoration: none;
+  background-color: $color-blue-strong-5;
+
+  span {
+    text-decoration: none !important;
+    color: white;
+
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+}
+
+a:link {
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  text-decoration: none;
+}
+
+button {
+  background-color: $color-green-android;
+  border: none;
+  border-radius: 10px;
+}
+
+hr {
+  border-color: $color-sweet-red;
+}
+
+.company-logo {
+  height: 100%;
+
+  .logo {
+    height: 100%;
+  }
+}
+
+header {
+  height: 85vh;
+  /* stylelint-disable */
+  background:
+    linear-gradient(to top, rgba(245, 246, 252, 0), rgba(117, 19, 93, 0.73)),
+    image-url('header-cellphone.png'),
+    center;
+  /* stylelint-enable */
+  background-size: 110% !important;
+  background-repeat: no-repeat;
+  background-position: top;
+
+  h1 {
+    color: white;
+    font-family: $font-title;
+  }
+
+  @media screen and (min-device-width: 426px) {
+    height: auto;
+    min-height: 50vh;
+    padding: 0 !important;
+    background-image: image-url('header-desk.png'); /* stylelint-disable-line */
+    background-repeat: no-repeat;
+    background-position: top;
+  }
+
+  @media screen and (min-device-width: 1024px) {
+    min-height: 75vh;
+  }
+
+  @media screen and (min-device-width: 1440px) {
+    min-height: 100vh;
+  }
+}
+
+footer {
+  background-color: $color-blue-strong;
+  color: white;
+  bottom: 0;
+  margin: 0 !important;
+  padding: 1rem 1rem 0 1rem;
+
+  li {
+    &:hover {
+      text-decoration: line-through;
+      cursor: pointer;
+    }
+  }
+}
+
+.selector-container {
+  margin: 1rem;
+  padding: 0.5rem;
+
+  .container {
+    transition: 0.1s;
+    border-radius: 6px;
+    border: solid $color-soft-yellow 2px;
+    background-color: rgba($color: $color-soft-yellow, $alpha: 0.25);
+
+    &:hover {
+      transition: 0.2s;
+      transform: scale(1.05);
+      box-shadow: rgba($color: black, $alpha: 0.5) 10px 10px 4px 4px;
+    }
+  }
+
+  span {
+    color: black;
+  }
+
+  img {
+    border: solid lightgray 5px;
+    width: 100%;
+    border-radius: 50%;
+  }
+}
+
+.hello-text {
+  margin: auto;
+}
+
+.odd {
+  background-color: rgba($color: $color-sweet-red, $alpha: 0.2);
+  color: $color-sweet-red-dark;
+}
+
+.content-pic {
+  border-radius: 10px;
+}
+
+.profile-container {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.8rem;
+
+  button {
+    padding: 1rem;
+    margin: auto;
+    background-color: $color-soft-yellow;
+    border-radius: 4px;
+  }
+
+  form {
+    button {
+      background-color: $color-sweet-red;
+      color: whitesmoke;
+      font-weight: bold;
+    }
+  }
+
+  img {
+    border-radius: 50%;
+  }
+}
+
+.signup-form {
+  color: $color-sweet-red-dark;
+  min-height: 60vh;
+  background-color: rgba($color: $color-sweet-red, $alpha: 0.15);
+
+  input {
+    border: solid $color-green-android 1px;
+    border-radius: 10px;
+  }
+
+  label {
+    margin: 1rem 0;
+  }
+
+  button {
+    background-color: $color-sweet-red;
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+  }
+}
+
+.appointment-container {
+  padding: 1rem;
+
+  img {
+    background-color: white;
+    margin: auto;
+    width: 100%;
+    border-radius: 50%;
+    border: solid lightgray 3px;
+  }
+
+  .btn-attend {
+    color: white;
+    border-radius: 3px;
+  }
+
+  .btn-cancel {
+    background-color: $color-sweet-red;
+    color: white;
+  }
+
+  button {
+    margin: 1rem auto;
+    height: auto;
+    padding: 0.2rem;
+    width: 100%;
+    bottom: 0 !important;
+  }
+
+  @media screen and(max-device-width: 1023px) {
+    img {
+      margin: auto;
+      width: 50%;
+    }
+  }
+}
+
+nav {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: $color-sweet-red;
+  color: white;
+  font-family: $font-title;
+  text-decoration: none;
+
+  span {
+    cursor: pointer;
+
+    &:hover {
+      transition: 0.2s;
+      transform: scale(1.05);
+    }
+  }
+
+  .queue {
+    margin: 0;
+    padding: 0;
+    // background-color: rgba(220,20,30,0.2);
+    background-color: rgba($color: $color-blue-soft, $alpha: 0.3);
+
+    span {
+      margin: auto;
+      border-radius: 10px;
+      padding: 0.5rem;
+    }
+  }
+
+  .utils-container {
+    color: white;
+    margin: 0;
+    border: solid $color-sweet-red-dark 5px;
+    padding: 0;
+    height: 100%;
+
+    button {
+      background-color: $color-sweet-red-dark;
+
+      span {
+        background-color: $color-sweet-red-dark;
+      }
+    }
+  }
+
+  .company-logo {
+    font-size: 24px;
+
+    a {
+      cursor: default;
+      color: white;
+    }
+
+    img {
+      width: 20%;
+    }
+  }
+}
+
+.search-form-container {
+  form {
+    color: $color-blue-strong-5;
+    background-color: $color-soft-yellow;
+    border-radius: 0.5rem;
+
+    div {
+      margin: 0.2rem;
+    }
+
+    label {
+      margin: auto;
+    }
+
+    button {
+      width: 85%;
+      padding: 0.5rem;
+      background-color: white;
+      border-radius: 0.2rem;
+    }
+
+    select {
+      background-color: white;
+      border-radius: 10px;
+      border: none;
+    }
+  }
+}

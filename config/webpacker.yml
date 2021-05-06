@@ -55,9 +55,9 @@ development:
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
     https: false
-    host: localhost
-    port: 3035
-    public: localhost:3035
+    host: '0.0.0.0'
+    port: 3000
+    public: http://professional-connector.herokuapp.com
     hmr: false
     # Inline should be set to true if using HMR
     inline: true
@@ -67,6 +67,8 @@ development:
     use_local_ip: false
     quiet: false
     pretty: false
+    proxy:
+      '/api/v1': 'http://professional-connector.herokuapp.com'
     headers:
       'Access-Control-Allow-Origin': '*'
     watch_options:

@@ -1,0 +1,30 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-scss", "stylelint-csstree-validator"],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "csstree/validator": true
+  },
+  "ignoreFiles": [
+    "images/**",
+    "build/**",
+    "dist/**",
+    "bin/**",
+    "config/**",
+    "db/**",
+    "lib/**",
+    "log/**",
+    "node_modules/**",
+    "public/**",
+    "spec/**",
+    "storage/**",
+    "tmp/**",
+    "vendor/**",
+    "**/reset*.css",
+    "**/bootstrap*.css",
+    "**/*.js",
+    "**/*.jsx"
+  ]
+}
+

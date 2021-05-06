@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when rendering login it renders correctly 1`] = `
+<form
+  className="stack center signup-form"
+  onSubmit={[Function]}
+>
+  <label
+    className="board center"
+    htmlFor="username"
+  >
+    <div
+      className="col-10"
+    >
+      User Name
+    </div>
+    <input
+      className="col-10"
+      name="username"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </label>
+  <label
+    className="board center"
+    htmlFor="password"
+  >
+    <div
+      className="col-10"
+    >
+      Password
+    </div>
+    <input
+      className="col-10"
+      name="password"
+      onChange={[Function]}
+      type="password"
+      value=""
+    />
+  </label>
+  <button
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
+`;
